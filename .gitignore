@@ -3,7 +3,5 @@
 bin/
 bin-int/
 
-# Visual Studio Files
-**.vcxproj
-**.vcxproj.filters
-**.vcxproj.user
+# Files
+*.user
