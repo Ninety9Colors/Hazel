@@ -1,16 +1,9 @@
 #include "Application.h"
 namespace Hazel {
-	Application::Application() {
+  Application::Application() {}
+  Application::~Application() {}
 
-	
-	}
-	Application::~Application() {
-
-		
-	}
-	void Application::run() {
-		while (true);
-
-	}
-
+  void Application::run() {
+    while (true);
+  }
 }//namespace Hazel
