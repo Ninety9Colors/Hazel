@@ -13,8 +13,8 @@ project "Sandbox"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
 	includedirs {
-		"Hazel/vendor/spdlog/include",
-		"Hazel/src"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{prj.name}/src"
 	}
 
 	links {
@@ -22,8 +22,8 @@ project "Sandbox"
 	}
 
 	files {
-		"${prj.name}/src/**.h",
-		"${prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	filter "system:windows"
