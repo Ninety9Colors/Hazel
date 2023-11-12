@@ -1,3 +1,5 @@
+#include "hzpch.h"
+
 #include "Application.h"
 
 #include "Events/MouseEvent.h"

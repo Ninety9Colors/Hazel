@@ -1,5 +1,8 @@
-#include "Log.h"
+#include "hzpch.h"
+
 #include "spdlog/sinks/stdout_color_sinks.h"
+
+#include "Log.h"
 
 namespace Hazel {
 

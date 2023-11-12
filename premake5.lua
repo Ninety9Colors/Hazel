@@ -13,8 +13,8 @@ project "Sandbox"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
 	includedirs {
-		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src"
+		"Hazel/vendor/spdlog/include",
+		"Hazel/src"
 	}
 
 	links {
@@ -54,8 +54,12 @@ project "Hazel"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "hzpch.h"
+	pchsource "%{prj.name}/src/hzpch.cpp"
 	
 	includedirs {
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 

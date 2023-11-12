@@ -1,7 +1,6 @@
-#include <memory>
+#include "spdlog/spdlog.h"
 
 #include "Core.h"
-#include "spdlog/spdlog.h"
 
 namespace Hazel {
 
