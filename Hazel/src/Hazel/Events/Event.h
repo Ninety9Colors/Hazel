@@ -30,27 +30,27 @@ namespace Hazel {
 		EventCategoryMouseButton    = BIT(4)
 	};
 
-#define EVENT_CLASS_TYPE(type) static EventType getStaticType() { return EventType::##type; }\
-								               virtual EventType getEventType() const override { return getStaticType(); }\
-								               virtual const char* getName() const override { return #type; }
+#define EVENT_CLASS_TYPE(type) static EventType get_static_type() { return EventType::##type; }\
+								               virtual EventType get_event_type() const override { return get_static_type(); }\
+								               virtual const char* get_name() const override { return #type; }
 
-#define EVENT_CLASS_CATEGORY(category) virtual int getCategoryFlags() const override { return category; }
+#define EVENT_CLASS_CATEGORY(category) virtual int get_category_flags() const override { return category; }
 
 	class HAZEL_API Event
 	{
 		friend class EventDispatcher;
 	public:
-		virtual EventType getEventType() const = 0;
-		virtual const char* getName() const = 0;
-		virtual int getCategoryFlags() const = 0;
-		virtual std::string ToString() const { return getName(); }
+		virtual EventType get_event_type() const = 0;
+		virtual const char* get_name() const = 0;
+		virtual int get_category_flags() const = 0;
+		virtual std::string to_string() const { return get_name(); }
 
-		inline bool isInCategory(EventCategory category)
+		inline bool is_in_category(EventCategory category)
 		{
-			return getCategoryFlags() & category;
+			return get_category_flags() & category;
 		}
 	protected:
-		bool m_Handled = false;
+		bool handled_ = false;
 	};
 
 	class EventDispatcher
@@ -59,27 +59,27 @@ namespace Hazel {
 		using EventFn = std::function<bool(T&)>;
 	public:
 		EventDispatcher(Event& event)
-			: m_Event(event)
+			: event_(event)
 		{
 		}
 
 		template<typename T>
 		bool dispatch(EventFn<T> func)
 		{
-			if (m_Event.getEventType() == T::getStaticType())
+			if (event_.get_event_type() == T::get_static_type())
 			{
-				m_Event.m_Handled = func(*(T*)&m_Event);
+				event_.handled_ = func(*(T*)&event_);
 				return true;
 			}
 			return false;
 		}
 	private:
-		Event& m_Event;
+		Event& event_;
 	};
 
 	inline std::ostream& operator<<(std::ostream& os, const Event& e)
 	{
-		return os << e.ToString();
+		return os << e.to_string();
 	}
 }
 

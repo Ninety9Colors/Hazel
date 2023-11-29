@@ -1,18 +1,28 @@
 #include "hzpch.h"
-
 #include "Application.h"
 
-#include "Events/MouseEvent.h"
-#include "Log.h"
+#include "Hazel/Events/ApplicationEvent.h"
+
+#include <GLFW/glfw3.h>
 
 namespace Hazel {
-	Application::Application() {}
-	Application::~Application() {}
 
-	void Application::run() {
-    MouseMovedEvent e(100,100);
-    HZ_TRACE(e.ToString());
-		while (true);
-	}
+  Application::Application()
+  {
+    window_ = std::unique_ptr<Window>(Window::create());
+  }
 
-}//namespace Hazel
+  Application::~Application()
+  {
+  }
+
+  void Application::run()
+  {
+    while (running_) {
+      glClearColor(1, 0, 1, 1);
+      glClear(GL_COLOR_BUFFER_BIT);
+      window_->update();
+    }
+  }
+
+}

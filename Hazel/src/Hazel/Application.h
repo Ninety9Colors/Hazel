@@ -2,20 +2,24 @@
 
 #include "Core.h"
 #include "Events/Event.h"
+#include "Window.h"
 
 namespace Hazel {
-class HAZEL_API Application
-{
-public:
-	Application();
-	virtual ~Application();
 
-	void run();
+  class HAZEL_API Application
+  {
+  public:
+    Application();
+    virtual ~Application();
 
-};
+    void run();
 
-// To be defined in client
-Application* CreateApplication();
+  private:
+    std::unique_ptr<Window> window_;
+    bool running_ = true;
+  };
 
-}//namespace Hazel
+  // To be defined in CLIENT
+  Application* create_application();
 
+}// namespace Hazel
