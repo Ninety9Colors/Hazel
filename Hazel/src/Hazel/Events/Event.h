@@ -1,6 +1,7 @@
 #pragma once
-
 #include "hzpch.h"
+
+#include <spdlog/fmt/ostr.h>
 
 #include "../Core.h"
 
