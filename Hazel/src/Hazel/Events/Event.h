@@ -44,6 +44,9 @@ namespace Hazel {
 		virtual EventType get_event_type() const = 0;
 		virtual const char* get_name() const = 0;
 		virtual int get_category_flags() const = 0;
+    
+    inline const bool is_handled() { return handled_; };
+    const void set_handled(const bool& handled) { handled_ = handled; };
 		virtual std::string to_string() const { return get_name(); }
 
 		inline bool is_in_category(EventCategory category)

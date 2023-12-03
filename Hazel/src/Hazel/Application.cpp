@@ -22,7 +22,8 @@ namespace Hazel {
     while (running_) {
       glClearColor(1, 1, 1, 0);
       glClear(GL_COLOR_BUFFER_BIT);
-      window_->update();
+      layer_stack_.on_update();
+      window_->on_update();
     }
   }
 
@@ -33,6 +34,7 @@ namespace Hazel {
       });
 
     HZ_CORE_TRACE("{0}", e);
+    layer_stack_.on_event(e);
   }
 
   bool Application::on_window_close_event(WindowCloseEvent& e) {

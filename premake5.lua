@@ -62,16 +62,21 @@ project "Hazel"
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
 
-	filter "configurations:Debug"
+		filter "configurations:Debug"
 		defines "HZ_DEBUG"
 		symbols "On"
+		staticruntime "off"
+		runtime "Debug"
 
 	filter "configurations:Release"
 		defines "HZ_RELEASE"
+		staticruntime "off"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "HZ_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -112,11 +117,16 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "HZ_DEBUG"
 		symbols "On"
+		staticruntime "off"
+		runtime "Debug"
 
 	filter "configurations:Release"
 		defines "HZ_RELEASE"
+		staticruntime "off"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "HZ_DIST"
+		buildoptions "/MD"
 		optimize "On"

@@ -136,7 +136,7 @@ namespace Hazel {
     glfwDestroyWindow(window_);
   }
 
-  void WindowsWindow::update()
+  void WindowsWindow::on_update()
   {
     glfwPollEvents();
     glfwSwapBuffers(window_);

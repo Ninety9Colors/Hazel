@@ -29,7 +29,7 @@ namespace Hazel {
 
     virtual ~Window() {}
 
-    virtual void update() = 0;
+    virtual void on_update() = 0;
 
     virtual unsigned int get_width() const = 0;
     virtual unsigned int get_height() const = 0;
