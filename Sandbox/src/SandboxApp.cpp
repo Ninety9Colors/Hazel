@@ -27,6 +27,5 @@ public:
 };
 
 Hazel::Application* Hazel::create_application() {
-
   return new Sandbox;
 }

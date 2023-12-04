@@ -19,8 +19,8 @@ public:
   void on_event(Event& e);
   void on_update();
 
-  std::vector<Layer*>::iterator begin() { return layers_.begin(); };
-  std::vector<Layer*>::iterator end() { return layers_.end(); };
+  inline std::vector<Layer*>::iterator begin() { return layers_.begin(); };
+  inline std::vector<Layer*>::iterator end() { return layers_.end(); };
 private:
   std::vector<Layer*> layers_;
   std::vector<Layer*>::iterator layer_insert_;

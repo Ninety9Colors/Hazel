@@ -6,11 +6,10 @@
 #include <GLFW/glfw3.h>
 
 namespace Hazel {
-
   Application::Application()
   {
     window_ = std::unique_ptr<Window>(Window::create()); 
-    window_->set_event_callback([&] (Event& e) { on_event(e); });
+    window_->set_event_callback([this] (Event& e) { on_event(e); });
   }
 
   Application::~Application()
